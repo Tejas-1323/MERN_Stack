@@ -1,6 +1,9 @@
-const mongoose = require("mongoose");
+import dotenv from 'dotenv';
+dotenv.config();
 
-const DB_URI = "mongodb://localhost:27017/INotbook"; // Change as needed
+import mongoose from 'mongoose';
+
+const DB_URI = process.env.DB_URI || 'mongodb://localhost:27017/INotbook'; // Fallback to default if not set
 
 const connectDB = async () => {
   try {
@@ -8,11 +11,11 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log("✅ MongoDB Connected Successfully!");
+    console.log('✅ MongoDB Connected Successfully!');
   } catch (error) {
-    console.error("❌ MongoDB Connection Failed:", error);
+    console.error('❌ MongoDB Connection Failed:', error);
     process.exit(1); // Exit the process if connection fails
   }
 };
 
-module.exports = connectDB;
+export default connectDB;
