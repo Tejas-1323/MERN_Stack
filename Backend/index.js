@@ -5,6 +5,7 @@ import connectDB from './db.js';
 
 const app = express();
 const port = 3001;
+app.use(express.json())
 connectDB();
 app.use('/api/auth', userRoutes);
 app.use('/api/notes', noteRoutes);

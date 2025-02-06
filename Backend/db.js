@@ -1,9 +1,14 @@
 import dotenv from 'dotenv';
-dotenv.config();
-
 import mongoose from 'mongoose';
 
-const DB_URI = process.env.DB_URI || 'mongodb://localhost:27017/INotbook'; // Fallback to default if not set
+dotenv.config();
+
+const DB_URI = process.env.DB_URI;
+
+if (!DB_URI) {
+  console.error('❌ DB_URI not defined in .env file');
+  process.exit(1); // Exit the process if DB_URI is missing
+}
 
 const connectDB = async () => {
   try {

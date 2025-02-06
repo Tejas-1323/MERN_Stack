@@ -1,14 +1,14 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 // Define the Schema (Blueprint)
 const userSchema = new mongoose.Schema({
-  name: { type: String, require: true },
-  email: { type: String, unique: true, require: true },
-  password: { type: String, unique: true, require: true },
+  name: { type: String, required: true },
+  email: { type: String, unique: true, required: true },
+  password: { type: String, unique: true, required: true },
   date: { type: Date, default: Date.now },
 });
 
 // Create the Model from the Schema
-const User = mongoose.model('user', userSchema);
+ const User = mongoose.model('user', userSchema);
 
-module.exports = User;
+export default User;
