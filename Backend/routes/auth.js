@@ -90,7 +90,7 @@ router.post('/login', async (req, res) => {
 router.post('/getUser', fetchUser, async (req, res) => {
   try {
     const userId = req.user.id;
-    
+
     const user = await User.findById(userId).select('-password');
     res.status(200).send(user);
   } catch (error) {
@@ -98,7 +98,5 @@ router.post('/getUser', fetchUser, async (req, res) => {
     res.status(500).json({ message: 'Error creating user', error });
   }
 });
-
-
 
 export default router;

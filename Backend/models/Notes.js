@@ -1,7 +1,11 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 // Define the Schema (Blueprint)
 const NotesSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+  },
   title: { type: String, required: true },
   description: { type: String, required: true },
   tag: { type: String, default: 'General' },
@@ -11,4 +15,4 @@ const NotesSchema = new mongoose.Schema({
 // Create the Model from the Schema
 const Note = mongoose.model('note', NotesSchema);
 
-module.exports = Note;
+export default Note;
